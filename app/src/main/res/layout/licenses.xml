@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/license_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Full-text licenses of used third-party software:\n"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/license0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-ACPDFVIEW" />
+        <Button
+            android:id="@+id/android_shell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-ANDROID-SHELL" />
+        <Button
+            android:id="@+id/license_arpack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-ARPACK" />
+        <Button
+            android:id="@+id/lt_dftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSING TERMS-DFTB+" />
+        <Button
+            android:id="@+id/license_dftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-DFTB+" />
+        <Button
+            android:id="@+id/license1_dftd4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-DFTD4" />
+        <Button
+            android:id="@+id/license2_dftd4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-DFTD4" />
+        <Button
+            android:id="@+id/licenseGBSA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-GBSA-PARAMETERS" />
+        <Button
+            android:id="@+id/licenseGV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-GRAPHVIEW" />
+        <Button
+            android:id="@+id/license5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-LAPACK" />
+        <Button
+            android:id="@+id/license_mctc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MCTC-LIB" />
+        <Button
+            android:id="@+id/license_mstore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MSTORE" />
+        <Button
+            android:id="@+id/license_multicharge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MULTICHARGE" />
+        <Button
+            android:id="@+id/license7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-OPENBABEL" />
+        <Button
+            android:id="@+id/license_openblas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-OPENBLAS" />
+        <Button
+            android:id="@+id/opsin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-OPSIN" />
+        <Button
+            android:id="@+id/python"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-PYTHON" />
+        <Button
+            android:id="@+id/lt_sk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSING TERMS-SLATER-KOSTER-FILES" />
+        <Button
+            android:id="@+id/license_sk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-SLATER-KOSTER-FILES" />
+        <Button
+            android:id="@+id/license1_sdftd3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-S-DFTD3" />
+        <Button
+            android:id="@+id/license2_sdftd3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-S-DFTD3" />
+        <Button
+            android:id="@+id/license1_tblite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-TBLITE" />
+        <Button
+            android:id="@+id/license2_tblite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-TBLITE" />
+        <Button
+            android:id="@+id/license1_tomlf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-TOML-F" />
+        <Button
+            android:id="@+id/license2_tomlf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-TOML-F" />
+        <Button
+            android:id="@+id/license10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-X11-BASIC" />
+        <Button
+            android:id="@+id/license11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSING TERMS-X11-BASIC" />
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+    </LinearLayout>
+</ScrollView>

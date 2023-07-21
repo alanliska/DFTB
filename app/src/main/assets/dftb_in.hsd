@@ -1,0 +1,35 @@
+Geometry = XyzFormat {
+<<< Input.xyz
+}
+
+Driver = LBFGS {}
+
+Hamiltonian = DFTB {
+    SCC = Yes
+    Filling = Fermi {
+       Temperature [K] = 300
+    }
+    MaxAngularMomentum {
+       C = "p"
+       O = "p"
+    }
+    SlaterKosterFiles = Type2FileNames {
+       Prefix = "/data/data/cz.jh.dftb/files/sk_files/"
+       Separator = "-3ob-"
+       Suffix  = ".skf"
+    }
+}
+
+Options = {
+    WriteAutotestTag = Yes
+}
+
+Analysis = {
+    CalculateForces = Yes
+}
+
+ParserOptions = {
+    ParserVersion = 7
+}
+
+

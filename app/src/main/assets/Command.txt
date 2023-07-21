@@ -1,0 +1,1 @@
+export HOME=/data/data/cz.jh.dftb/files ; cd $HOME ; dftb 
