@@ -26,7 +26,7 @@ More info on licenses & references - please refer to the licensing information i
 Licenses and references to used third-party software:
 
  * ACPDFVIEW
- Author: Bhuvaneshw (Github)
+ Author: Bhuvaneshwaran (Github)
  Source code: https://github.com/Bhuvaneshw/acpdfview
  License: GNU GPL-3.0
 
