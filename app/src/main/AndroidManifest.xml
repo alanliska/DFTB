@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
-        tools:targetApi="33">
+        tools:targetApi="34">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -34,6 +34,7 @@
         <activity android:name="cz.jh.dftb.ManualDftb" />
         <activity android:name="cz.jh.dftb.ManualDftbRecipes" />
         <activity android:name="cz.jh.dftb.ManualModes" />
+        <activity android:name="cz.jh.dftb.ManualOpenbabel" />
         <activity android:name="cz.jh.dftb.Licenses" />
         <activity android:name="cz.jh.dftb.Graph" />
     </application>

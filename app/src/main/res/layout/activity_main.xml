@@ -205,6 +205,12 @@
             android:backgroundTint="#00AABB"
             android:text="OFFICIAL MODES MANUAL" />
         <Button
+            android:id="@+id/manual_openbabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="OFFICIAL OPENBABEL MANUAL" />
+        <Button
             android:id="@+id/Graph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
     Button manual_dftb;
     Button recipes_dftb;
     Button manual_modes;
+    Button manual_openbabel;
     private static final int MY_PERMISSION_REQUEST_STORAGE = 1;
 
     static final String LOGTAG = "";
@@ -332,6 +333,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, Licenses.class);
+                startActivity(intent);
+            }
+        });
+
+        manual_openbabel = (Button) findViewById(R.id.manual_openbabel);
+        manual_openbabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ManualOpenbabel.class);
                 startActivity(intent);
             }
         });
@@ -574,12 +585,16 @@ public class MainActivity extends AppCompatActivity {
                             outputWriter.write(SmilesString);
                             outputWriter.close();
 
-                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+//                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+//
+//                            FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+//                            outputWriter3.write(ObabelOutput);
+//                            outputWriter3.close();
 
-                            FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
-                            outputWriter3.write(ObabelOutput);
-                            outputWriter3.close();
+                            // replacement:
+                            String command_smiles = "export HOME=/data/data/cz.jh.dftb/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > Input.xyz";
+                            new RunConversion().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, command_smiles);
 
 //                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
 
@@ -593,7 +608,8 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 //                        exec("rm "+getFilesDir()+"/temp.xyz");
-                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // do not remove - when using AndroidShell
+//                        exec("rm "+getFilesDir()+"/temp.smi");
                         // here it should be:
                         output4(exec("cat "+getFilesDir()+"/Input.xyz"));
                     }
@@ -686,12 +702,16 @@ public class MainActivity extends AppCompatActivity {
                             outputWriter2.write(smiles);
                             outputWriter2.close();
 
-                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+//                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+//
+//                            FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+//                            outputWriter3.write(ObabelOutput);
+//                            outputWriter3.close();
 
-                            FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
-                            outputWriter3.write(ObabelOutput);
-                            outputWriter3.close();
+                            // replacement:
+                            String command_smiles = "export HOME=/data/data/cz.jh.dftb/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > Input.xyz";
+                            new RunConversion().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, command_smiles);
 
 //                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
 //
@@ -705,7 +725,8 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 //                        exec("rm "+getFilesDir()+"/temp.xyz");
-                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // do not remove - when using AndroidShell
+//                        exec("rm "+getFilesDir()+"/temp.smi");
                         // here it should be:
                         output3(exec("cat "+getFilesDir()+"/dftb_in.hsd"));
                         output4(exec("cat "+getFilesDir()+"/Input.xyz"));
@@ -734,6 +755,83 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
+
+    }
+
+    // Ignore the bad AsyncTask usage.
+    final class RunConversion extends AsyncTask<String, Void, CommandResult> {
+
+        private ProgressDialog dialog;
+
+        @Override protected void onPreExecute() {
+
+            // this is cancellable progress dialog
+            dialog = new ProgressDialog(MainActivity.this);
+            dialog.setTitle("Please wait...");
+            dialog.setMessage("Conversion is in progress.");
+            dialog.setCancelable(false);
+            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog2, int which) {
+                    dialog2.dismiss();
+                }
+            });
+            dialog.show();
+
+            // this was the original non-cancellable progress dialog
+//            dialog = ProgressDialog.show(MainActivity.this, "Please wait...", "Calculation is in progress.");
+//            dialog.setCancelable(false);
+        }
+
+        @Override protected CommandResult doInBackground(String... commands) {
+            return com.jrummyapps.android.shell.Shell.SH.run(commands);
+        }
+
+        @Override protected void onPostExecute(CommandResult result) {
+            if (!isFinishing()) {
+                dialog.dismiss();
+//                outputView2.setText(resultToHtml(result));
+                String OutputofExecution = resultToHtml(result).toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("LastExecutionOutput.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(OutputofExecution);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                outputView2.setText(colorized(OutputofExecution, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                outputView2.setText(OutputofExecution);
+                output3(exec("cat "+getFilesDir()+"/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/"));}
+        }
+
+        private Spanned resultToHtml(CommandResult result) {
+            StringBuilder html = new StringBuilder();
+            // exit status
+            html.append("<p><strong>Exit Code:</strong> ");
+            if (result.isSuccessful()) {
+                html.append("<font color='green'>").append(result.exitCode).append("</font>");
+            } else {
+                html.append("<font color='red'>").append(result.exitCode).append("</font>");
+            }
+            html.append("</p>");
+            // stdout
+            if (result.stdout.size() > 0) {
+                html.append("<p><strong>STDOUT:</strong></p><p>")
+                        .append(result.getStdout().replaceAll("\n", "<br>"))
+                        .append("</p>");
+            }
+            // stderr
+            if (result.stderr.size() > 0) {
+                html.append("<p><strong>STDERR:</strong></p><p><font color='red'>")
+                        .append(result.getStderr().replaceAll("\n", "<br>"))
+                        .append("</font></p>");
+            }
+            return Html.fromHtml(html.toString());
+        }
 
     }
 
