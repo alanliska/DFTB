@@ -21,6 +21,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -122,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
     Button manual_modes;
     Button manual_openbabel;
     private static final int MY_PERMISSION_REQUEST_STORAGE = 1;
+    Button change_size;
+    Button PrivacyPolicy;
 
     static final String LOGTAG = "";
     static final int BUFSIZE = 5192;
@@ -324,8 +327,34 @@ public class MainActivity extends AppCompatActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        // prevent crash in the beginning, when the file is not already unzipped
+        File TextSize = new File(getFilesDir()+"/TextSize.txt");
+        if (TextSize.exists()) {
+            outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        } else {
+            outputView2.setTextSize(12);
+        }
+        outputView2.setMovementMethod(new ScrollingMovementMethod());
         Graph = (Button) findViewById(R.id.Graph);
         Graph.setOnClickListener(GraphClick);
+
+        PrivacyPolicy = (Button) findViewById(R.id.PrivacyPolicy);
+        PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PrivacyPolicy.class);
+                startActivity(intent);
+            }
+        });
+
+        change_size = (Button) findViewById(R.id.change_size);
+        change_size.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChangeSize.class);
+                startActivity(intent);
+            }
+        });
 
         License = (Button) findViewById(R.id.License);
         License.setOnClickListener(new View.OnClickListener() {
@@ -443,6 +472,7 @@ public class MainActivity extends AppCompatActivity {
                     copyFromAssetsToInternalStorage("Command.txt");
                     copyFromAssetsToInternalStorage("dftb_in.hsd");
                     copyFromAssetsToInternalStorage("Input.xyz");
+//                    copyFromAssetsToInternalStorage("TextSize.txt");
                     String zipFilePath = getFilesDir()+"/assets.zip";
                     String destDir = getFilesDir()+"/" ;
 //                    unzipfile( zipFilePath, destDir ) ;

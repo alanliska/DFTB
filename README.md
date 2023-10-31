@@ -26,7 +26,7 @@ More info on licenses & references - please refer to the licensing information i
 Licenses and references to used third-party software:
 
  * ACPDFVIEW
- Author: Bhuvaneshwaran (Github)
+ Author: Bhuvaneshw (Github)
  Source code: https://github.com/Bhuvaneshw/acpdfview
  License: GNU GPL-3.0
 
@@ -103,8 +103,7 @@ Licenses and references to used third-party software:
 
  * OPENBABEL
  Ref.: N M O'Boyle, M Banck, C A James, C Morley, T Vandermeersch, and G R Hutchison. "Open Babel: An open chemical toolbox." J. Cheminf. (2011), 3, 33. DOI:10.1186/1758-2946-3-33
-       The Open Babel Package, version 2.3.1 http://openbabel.org (accessed Oct 2011)
- Source code: http://openbabel.org/wiki/Main_Page, https://github.com/openbabel/openbabel, https://sourceforge.net/projects/openbabel/
+ Source code: http://openbabel.org/wiki/Main_Page, https://github.com/openbabel/openbabel
 
  * OPENBLAS
  Authors: Zhang Xianyi, Wang Qian, Zaheer Chothia
@@ -144,10 +143,70 @@ Licenses and references to used third-party software:
  Source code: https://github.com/kollokollo/X11Basic
  License: GPL-2.0
 
+Manuals:
 
+ * DFTB+: https://github.com/dftbplus/dftbplus/releases/download/23.1/manual.pdf (public domain)
+
+ * DFTB+ recipes: https://dftbplus-recipes.readthedocs.io/en/latest/ (CC BY-SA 4.0)
+
+ * MODES: https://dftbplus.org/fileadmin/DFTB-Plus/public/dftb/current/manual-modes.pdf (public domain)
+
+ * OpenBABEL: https://buildmedia.readthedocs.org/media/pdf/open-babel/latest/open-babel.pdf (CC0)
+
+Sources of the pre-compiled binaries:
+
+ * buildwire: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * dftb: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * dftd4: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * flux: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * integvalue: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * makecube: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * mctc-convert: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * modes: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * mstore-fortranize: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * mstore-info: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * multicharge: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * obabel: https://github.com/alanliska/openbabel-for-phreeqc-plus
+
+ * phonons: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * polyvalue: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * printunits: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * s-dftd3: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * setupgeom: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * skderivs: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * splvalue: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * tblite: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * waveplot: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * xbbc: https://github.com/alanliska/X11-Basic-for-Android
+
+ * xbvm: https://github.com/alanliska/X11-Basic-for-Android
 
 Other references:
 
  * UV-Vis spectra convolution: Tirri, Bernardino. Détermination d’un protocole de calcul pour la prédiction de spectres UV-vis de molécules en solution. Diss. Université Paris sciences et lettres, 2022.
 
 Info on licenses: please see the full-text licenses under the button Licenses. 
+
+ACKNOWLEDGEMENTS: 
+
+The authors appreciate the financial support from the GACR projects 18-12150S, 19-22806S, 21-23261S, and internal (institutional) support RVO: 61388955. 

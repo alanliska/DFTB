@@ -37,6 +37,8 @@
         <activity android:name="cz.jh.dftb.ManualOpenbabel" />
         <activity android:name="cz.jh.dftb.Licenses" />
         <activity android:name="cz.jh.dftb.Graph" />
+        <activity android:name="cz.jh.dftb.PrivacyPolicy" />
+        <activity android:name="cz.jh.dftb.ChangeSize" />
     </application>
 
 </manifest>
